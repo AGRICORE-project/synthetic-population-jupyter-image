@@ -1,0 +1,17 @@
+version: '3'
+services:
+  agricore-jupyter-synthetic-population:
+    image:  # TO_MODIFY replace with the appropriate image registry and tag
+    container_name: agricore-jupyter-synthetic-population
+    build: 
+      context: .
+    environment:
+      - GRANT_SUDO=yes
+    user: root
+    volumes:
+      - agricore-jupyter-populations:/home/jovyan/work
+    ports:
+      - 8888:8888
+    command: "start-notebook.sh --NotebookApp.token=agricore"
+volumes:
+  agricore-jupyter-populations:
